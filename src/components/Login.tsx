@@ -9,12 +9,19 @@ function Login() {
   const handleSubmitForm = async (username: string, password: string) => {
     try {
       const loginRequest = await axios.post(
-        process.env.SERVER_PORT || "http://localhost:5000",
-        { username, password }
+        process.env.SERVER_PORT_LOGIN || "http://localhost:5000/auth/login",
+        { username: username, password: password },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
       );
-      console.log(loginRequest)
+      setUsername("");
+      setPassword("");
+      console.log(loginRequest);
     } catch (error) {
-      console.error(error)
+      console.error(error);
     }
   };
 
