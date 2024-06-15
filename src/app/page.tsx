@@ -1,9 +1,11 @@
-import Header from "@/components/Header";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 export default function Home() {
+  const router = useRouter();
   return (
     <main>
-      <Header />
       <section className="w-screen container flex flex-col items-center mt-20">
         <h3 className="text-center text-5xl font-medium  text-gray-300">
           Create and manage your blogs from
@@ -15,11 +17,17 @@ export default function Home() {
           With blogger all you need is an account and a google sheet, then you
           can start publishing your blogs
         </p>
-        <section className="w-2/5 flex justify-between my-10">
-          <button className="px-5 py-2 text-xl text-black font-medium bg-white rounded-full">
+        <section className="w-2/5 flex justify-around my-10">
+          <button
+            className="px-5 py-2 text-xl text-black font-medium bg-white rounded-full"
+            onClick={() => router.push("/blogs")}
+          >
             Blogs dashboard
           </button>
-          <button className="px-5 py-2 text-xl text-white rounded-full font-medium bg-gradient-to-r from-red-500 to-orange-500 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500">
+          <button
+            className="px-5 py-2 text-xl text-white rounded-full font-medium bg-gradient-to-r from-red-500 to-orange-500 hover:bg-gradient-to-r hover:from-orange-500 hover:to-red-500"
+            onClick={() => router.push("/login")}
+          >
             Get Started
           </button>
         </section>
